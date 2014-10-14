@@ -73,6 +73,23 @@ def roscd(package_name):
         return
     vimp.lcd(pkg.path)
 
+@vimp.function('ros#Rosnt')
+def rosnt(package_name):
+    try:
+        pkg = rosp.Package(package_name)
+    except rospkg.ResourceNotFound:
+        print('Package {0} not found'.format(package_name))
+        return
+    vimp.nt(pkg.path)
+
+@vimp.function('ros#Rosntcd')
+def rosntcd(package_name):
+    try:
+        pkg = rosp.Package(package_name)
+    except rospkg.ResourceNotFound:
+        print('Package {0} not found'.format(package_name))
+        return
+    vimp.ntcd(pkg.path)
 
 @vimp.function('ros#RoscdComplete')
 def roscd_complete(arg_lead, cmd_line, cursor_pos):

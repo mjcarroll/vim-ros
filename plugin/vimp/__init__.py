@@ -6,6 +6,7 @@ Python wrapper for Vim.
 """
 
 import vim
+import plugins.nerdtree
 
 
 def escape(value):
@@ -70,6 +71,13 @@ def tabedit(filename):
 def lcd(path):
     vim.command('lcd {0}'.format(path))
 
+def nt(path):
+    if plugins.nerdtree.is_available():
+        plugins.nerdtree.open_to_dir(path)
+
+def ntcd(path):
+    if plugins.nerdtree.is_available():
+        plugins.nerdtree.open_to_dir_and_cd(path)
 
 def map(lhs, rhs, mode, buffer=False, silent=False, noremap=True):
     assert mode in 'nvsoic'

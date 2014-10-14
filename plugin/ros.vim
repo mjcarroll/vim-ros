@@ -118,6 +118,8 @@ augroup END
 " Commands {{{
 
 command! -nargs=1 -complete=custom,ros#RoscdComplete Roscd :call ros#Roscd(<f-args>)
+command! -nargs=1 -complete=custom,ros#RoscdComplete Rosnt :call ros#Rosnt(<f-args>)
+command! -nargs=1 -complete=custom,ros#RoscdComplete Rosntcd :call ros#Rosntcd(<f-args>)
 command! -nargs=* -complete=custom,ros#RosedComplete Rosed :call ros#Rosed(<f-args>)
 command! -nargs=* -complete=custom,ros#RosedComplete TabRosed :call ros#TabRosed(<f-args>)
 
