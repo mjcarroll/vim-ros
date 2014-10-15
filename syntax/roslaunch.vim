@@ -12,6 +12,7 @@ if exists("b:current_syntax")
   finish
 endif
 
+let g:xml_syntax_folding=1
 runtime syntax/xml.vim
 
 " roslaunch substitution args
