@@ -13,7 +13,7 @@ if exists("b:current_syntax")
 endif
 
 let g:xml_syntax_folding=1
-runtime syntax/xml.vim
+runtime! syntax/xml.vim
 
 " roslaunch substitution args
 syn match rosSubArg "\$(arg .\{-})" containedin=xmlString
@@ -29,7 +29,7 @@ let s:current_syntax=b:current_syntax
 unlet b:current_syntax
 
 syntax include @YAML syntax/yaml.vim
-syntax region ymlSnipInline matchgroup=rosparamTag start="\m<.\{-}rosparam.\{-}>" end="\m</.\{-}rosparam.\{-}>" contains=@YAML containedin=xmlEntity
+syntax region ymlSnipInline matchgroup=rosparamTag start="\m<.\{-}rosparam.\{-}>" end="\m</.\{-}rosparam.\{-}>" contains=@YAML containedin=xmlRegion
 hi link rosparamTag Statement
 
 syn match rosSubArg "\$(arg .\{-})" containedin=ymlSnipInline

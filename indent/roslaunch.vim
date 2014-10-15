@@ -7,10 +7,12 @@ endif
 
 " load the XML indent rules
 runtime! indent/xml.vim
-runtime! indent/yaml.vim
+"runtime! indent/yaml.vim
+
+let b:did_indent = 1
 
 " override the vim indent expression (we'll call it ourselves)
-setlocal indentexpr=GetRoslaunchIndent(v:lnum)
+setlocal indentexpr=GetRoslaunchIndent()
 
 " Only define the function once.
 if exists("*GetRoslaunchIndent")
@@ -19,12 +21,14 @@ endif
 
 " roslaunch-indent will return yaml indent inside a <rosparam> block, and
 " return -1 if not inside a block to trigger auto-indent
-function GetRoslaunchIndent(lnum)
-  return -1
-  if searchpair('<rosparam>','','</rosparam>','bWnm') > 0
-    return GetYAMLIndent(lnum)
-  else
+function GetRoslaunchIndent()
+  if searchpair('<rosparam.\{-}>','','<\/rosparam>','bWnm') > 0
+    echo "yaml indenting: ".string(v:lnum)
+    "return GetYAMLIndent()
     return -1
+  else
+    echo "xml indenting: ".string(v:lnum)
+    return XmlIndentGet(v:lnum,1)
   endif
 endfunc
 
