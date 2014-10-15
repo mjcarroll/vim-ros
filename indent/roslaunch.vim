@@ -17,8 +17,8 @@ if exists("*GetRoslaunchIndent")
   finish
 endif
 
-" wiki-indent will return vim indent inside a <pre> block,
-" and return -1 if not inside a block to trigger auto-indent
+" roslaunch-indent will return yaml indent inside a <rosparam> block, and
+" return -1 if not inside a block to trigger auto-indent
 function GetRoslaunchIndent(lnum)
   return -1
   if searchpair('<rosparam>','','</rosparam>','bWnm') > 0
