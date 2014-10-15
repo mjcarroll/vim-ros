@@ -12,7 +12,7 @@ if exists("b:current_syntax")
   finish
 endif
 
-runtime! syntax/xml.vim
+runtime syntax/xml.vim
 
 " roslaunch substitution args
 syn match rosSubArg "\$(arg .\{-})" containedin=xmlString
@@ -43,5 +43,4 @@ hi link rosSubAnon Macro
 
 let b:current_syntax=s:current_syntax
 
-let b:current_syntax = "roslaunch"
 
